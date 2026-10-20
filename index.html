@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>同窓会 参加者一覧</title>
+
+  <!-- CSSファイルを読み込む -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <main class="container">
+
+    <header class="page-header">
+      <p class="subtitle">REUNION MANAGEMENT</p>
+      <h1>同窓会 参加者一覧</h1>
+      <p class="description">出欠を確認して、楽しい同窓会を準備しましょう！</p>
+    </header>
+
+    <!-- 人数の集計 -->
+    <section class="summary">
+      <div class="summary-card">
+        <span>登録人数</span>
+        <strong id="totalCount">0</strong>
+        <small>人</small>
+      </div>
+
+      <div class="summary-card attending">
+        <span>参加予定</span>
+        <strong id="attendingCount">0</strong>
+        <small>人</small>
+      </div>
+
+      <div class="summary-card absent">
+        <span>不参加</span>
+        <strong id="absentCount">0</strong>
+        <small>人</small>
+      </div>
+    </section>
+
+    <!-- 参加者一覧 -->
+    <section class="list-section">
+      <div class="section-heading">
+        <h2>参加者リスト</h2>
+        <p>不参加の方はチェックを入れてください。</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th class="number-column">番号</th>
+              <th>ニックネーム</th>
+              <th>コメント</th>
+              <th class="check-column">不参加</th>
+              <th class="delete-column">削除</th>
+            </tr>
+          </thead>
+
+          <!-- JavaScriptで参加者を表示する場所 -->
+          <tbody id="participantList"></tbody>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button id="addButton" class="add-button" type="button">
+          ＋ 参加者を追加
+        </button>
+
+        <button id="printButton" class="print-button" type="button">
+          印刷する
+        </button>
+      </div>
+
+      <p id="saveMessage" class="save-message">
+        入力内容は自動保存されます。
+      </p>
+    </section>
+
+    <footer>
+      <p>同窓会を、みんなの思い出に。</p>
+    </footer>
+
+  </main>
+
+  <!-- JavaScriptファイルを読み込む -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

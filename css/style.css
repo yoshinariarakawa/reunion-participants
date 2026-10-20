@@ -1,0 +1,366 @@
+
+/* 全体の基本設定 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 30px 16px;
+  font-family: "Yu Gothic", "Meiryo", sans-serif;
+  color: #26364a;
+  background: #f0f5fa;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* タイトル */
+.page-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.subtitle {
+  color: #527da7;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.page-header h1 {
+  margin: 8px 0;
+  color: #173b63;
+  font-size: clamp(25px, 4vw, 36px);
+}
+
+.description {
+  color: #66778a;
+  font-size: 14px;
+}
+
+/* 人数の集計カード */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.summary-card {
+  padding: 20px 12px;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px #1c416010;
+  border-top: 4px solid #7897b8;
+}
+
+.summary-card span,
+.summary-card small {
+  display: block;
+  color: #64758a;
+  font-size: 13px;
+}
+
+.summary-card strong {
+  display: inline-block;
+  margin: 4px;
+  font-size: 34px;
+  color: #173b63;
+}
+
+.summary-card.attending {
+  border-top-color: #27865a;
+}
+
+.summary-card.absent {
+  border-top-color: #d62828;
+}
+
+.summary-card.absent strong {
+  color: #d62828;
+}
+
+/* 参加者リスト */
+.list-section {
+  padding: 24px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px #1c416010;
+}
+
+.section-heading h2 {
+  margin: 0 0 5px;
+  color: #173b63;
+}
+
+.section-heading p {
+  margin: 0 0 20px;
+  color: #718096;
+  font-size: 13px;
+}
+
+/* 表 */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+thead {
+  background: #173b63;
+  color: white;
+}
+
+th,
+td {
+  padding: 13px 10px;
+  border-bottom: 1px solid #e1e8f0;
+  text-align: left;
+}
+
+th {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+  background: #f7faff;
+}
+
+tbody tr:hover {
+  background: #edf4fb;
+}
+
+.number-column {
+  width: 65px;
+  text-align: center;
+}
+
+.check-column,
+.delete-column {
+  width: 85px;
+  text-align: center;
+}
+
+/* 入力欄 */
+.name-input,
+.comment-input {
+  width: 100%;
+  min-width: 100px;
+  padding: 9px;
+  border: 1px solid #cbd6e2;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 14px;
+  background: white;
+}
+
+.name-input:focus,
+.comment-input:focus {
+  outline: 2px solid #8ab8e5;
+  border-color: #527da7;
+}
+
+/* 名前と「不参加」を重ねる */
+.name-cell {
+  position: relative;
+  min-width: 160px;
+}
+
+.name-input {
+  position: relative;
+  z-index: 1;
+}
+
+.absent-label {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #d62828;
+  font-size: 19px;
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+  display: none;
+}
+
+/* 不参加にチェックが入った行 */
+tr.is-absent .name-input {
+  color: #b7bdc5;
+  background: #f1f2f4;
+  border-color: #e1e3e7;
+}
+
+tr.is-absent .absent-label {
+  display: block;
+}
+
+/* チェックボックス */
+.absent-checkbox {
+  width: 21px;
+  height: 21px;
+  accent-color: #d62828;
+  cursor: pointer;
+}
+
+/* 削除ボタン */
+.delete-button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  color: #b42323;
+  background: #fff0f0;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background: #ffdede;
+}
+
+/* 操作ボタン */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.actions button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-button {
+  color: white;
+  background: #245b87;
+}
+
+.add-button:hover {
+  background: #173b63;
+}
+
+.print-button {
+  color: #245b87;
+  background: #e8f1fa;
+}
+
+.print-button:hover {
+  background: #d8e8f8;
+}
+
+.save-message {
+  margin-top: 16px;
+  color: #718096;
+  font-size: 12px;
+}
+
+/* フッター */
+footer {
+  padding: 25px 0 5px;
+  text-align: center;
+  color: #718096;
+  font-size: 13px;
+}
+
+/* スマートフォン */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  .summary {
+    gap: 8px;
+  }
+
+  .summary-card {
+    padding: 14px 5px;
+  }
+
+  .summary-card strong {
+    font-size: 27px;
+  }
+
+  .summary-card span,
+  .summary-card small {
+    font-size: 11px;
+  }
+
+  .list-section {
+    padding: 15px 10px;
+  }
+
+  .actions button {
+    flex: 1;
+    padding: 12px 8px;
+  }
+}
+
+/* 印刷するときは操作ボタンなどを隠す */
+@media print {
+  body {
+    padding: 0;
+    background: white;
+  }
+
+  .summary-card,
+  .list-section {
+    box-shadow: none;
+  }
+
+  .actions,
+  .save-message,
+  footer,
+  .delete-column,
+  .delete-button,
+  .section-heading p {
+    display: none !important;
+  }
+
+  .list-section {
+    padding: 0;
+  }
+
+  .table-wrapper {
+    overflow: visible;
+  }
+
+  table {
+    min-width: 0;
+  }
+
+  th,
+  td {
+    padding: 7px 5px;
+  }
+
+  .name-input,
+  .comment-input {
+    border: none;
+    padding: 2px;
+    min-width: 0;
+  }
+
+  .absent-label {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+/* コメント欄の幅を確保する */
+.comment-input {
+  min-width: 180px;
+}
